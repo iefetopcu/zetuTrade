@@ -1,0 +1,97 @@
+﻿@model IEnumerable<zetutrade_Model.Models.Product>
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> localizer
+@{
+    ViewData["Title"] = localizer["product_title"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<div class="page-title">
+    <div class="container">
+        <div class="page-title-inner">
+            <h3>@localizer["product_title"]</h3>
+            <div class="breadcumb"> <a asp-action="Index" asp-controller="Home">@localizer["home_title"]</a><span> / </span><span>@localizer["product_title"]</span></div>
+            <div class="clearfix"></div>
+
+        </div>
+    </div>
+</div>
+
+<div class="newest">
+    <div class="container">
+        <div class="newest-content">
+            <div class="newest-tab">
+                <ul id="myTab" class="nav nav-tabs newest" role="tablist">
+                    @foreach (var group in Model.GroupBy(cat => new { cat.Category.categoryID, cat.Category.CategoryTexts }))
+                    {
+                       
+                        var categorytext = group.Key.CategoryTexts.Where(x=> x.Language == ViewBag.Language).FirstOrDefault();
+                        @if(categorytext != null)
+                {
+                    <li role="presentation">
+                        <a href="#@group.Key.categoryID" id="cat-1" role="tab" data-toggle="tab" aria-controls="1" aria-expanded="true">
+                            @categorytext.categoryName
+                        </a>
+                    </li>
+                }
+                        
+                    }
+                </ul>
+                <hr />
+                <div id="myTabContent" class="tab-content">
+                    @foreach (var group in Model.GroupBy(cat => new { cat.Category.categoryID, cat.Category.CategoryTexts }))
+                    {
+                       
+                        <div role="tabpanel" class="tab-pane fade in active" id="@group.Key.categoryID" aria-labelledby="cat-1">
+                            <div class="home-content">
+                                <div class="cat-offers">
+                                    <div class="row clearfix">
+                                        @foreach (var productlist in group)
+                                        {
+
+                                            var producttext = productlist.ProductTexts.FirstOrDefault();
+                                            if (productlist.Category.categoryID == @group.Key.categoryID)
+                                            {
+                                                @if (producttext != null)
+                                                {
+                                                    <div class="col-md-4" style="margin-bottom:20px;">
+                                                        <div class="cat-sec-3">
+                                                            <h3><a href="@Url.Action("Urun","Urunler", new { url = producttext.url })">@producttext.productName</a></h3>
+                                                            <img src="/@productlist.productPhotoUrl" class="img-responsive" style="width:100%!important;" alt="">
+                                                            <div class="cat-desc">
+                                                                <div class="cat-inner">
+                                                                    @*<div class="cat-title">@productlist.productName</div>*@
+                                                                    <a href="@Url.Action("Siparis","Urunler", new { url = producttext.url })" class="btn btn-border" style="background-color :#c6a220; color:white;">@localizer["get_an_offer"]</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+
+
+                                            }
+
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="col-md-4 prdct-grid">
+
+        <div class="product-name">
+            <a href="@Url.Action("Urun","Urunler", new { url = productlist.url })">@productlist.productName</a>
+        </div>
+        <div title="regular"><a href="@Url.Action("Urun","Urunler", new { url = productlist.url })"><img alt="1" src="@productlist.productPhotoUrl" style="width:100%!important"></a></div>
+        <br />
+        <a href="@Url.Action("Siparis","Urunler", new { url = productlist.url })" class="btn btn-blue" style="width:100%!important;">Teklif Al</a>
+    </div>*@

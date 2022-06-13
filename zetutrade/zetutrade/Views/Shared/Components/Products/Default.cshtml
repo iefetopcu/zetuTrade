@@ -1,0 +1,23 @@
+﻿@model IEnumerable<zetutrade_Model.Models.Product>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        var producttext = item.ProductTexts.FirstOrDefault();
+        @if (producttext != null)
+        {
+            <div class="col-lg-4">
+                <a href="@Url.Action("Urun","Urunler", new { url = producttext?.url })">
+                    <img src="/@item.productPhotoUrl" style="width:100%!important; padding:20px;" />
+                </a>
+                <a href="@Url.Action("Urun","Urunler", new { url = producttext?.url })">
+                    <h4>@producttext?.productName</h4>
+                </a>
+            </div>
+        }
+    }
+</div>

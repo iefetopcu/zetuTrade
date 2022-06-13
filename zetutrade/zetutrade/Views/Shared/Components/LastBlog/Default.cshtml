@@ -1,0 +1,22 @@
+﻿
+@model IEnumerable<zetutrade_Model.Models.Blog>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@foreach (var item in Model)
+{
+    var blogtext = item.BlogTexts.FirstOrDefault();
+    @if (blogtext != null)
+    {
+        <div class="row">
+            <div class="col-md-4">
+                <a href="@Url.Action("BlogOku", "Blog", new { url = blogtext.url })"><img src="/@item.blogPhoto" alt="" style="width:100%!important;"></a>
+            </div>
+            <div class="col-md-8">
+                <h5><a href="@Url.Action("BlogOku", "Blog", new { url = blogtext.url })">@blogtext.blogTitle</a></h5>
+                <div class="meta"> @item.releasetime.ToString("dd-MM-yyyy")</div>
+                <p>@blogtext.blogSpotText</p>
+            </div>
+        </div>
+        }
+    }

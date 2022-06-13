@@ -1,0 +1,49 @@
+﻿@model zetutrade_Model.Models.BlogText
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> localizer
+@{
+    ViewData["Title"] = "BlogOku";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var photourl = ViewBag.Photourl;
+}
+
+<div id="content">
+    <!-- Content -->
+    <div class="page-title">
+        <div class="container">
+            <div class="page-title-inner">
+                <h3>@localizer["blog_title"]</h3>
+                <div class="breadcumb"> <a href="">@localizer["home_title"]</a><span> / </span><span>@localizer["blog_title"]</span></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="blog">
+            <div class="row">
+                <div class="col-md-12 blog-content detail">
+                    <div class="row">
+                        <div class="col-md-12 blog-block">
+                            <div class="blog-image">
+                                <img src="/@Url.Content(photourl)" alt="@Model.blogTitle" class="img-responsive">
+                            </div>
+                            <h3 class="blog-post-title">@Model.blogTitle</h3>
+                            <div class="blog-meta">@ViewBag.time<span>|</span><a href="#comment-sec">@ViewBag.View @localizer["blog_view"]</a></div>
+                            <p><i>
+    @Model.blogSpotText
+</i></p>
+                            <p>@Html.Raw(Model.blogDescription)</p>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+

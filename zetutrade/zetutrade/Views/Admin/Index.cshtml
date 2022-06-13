@@ -1,0 +1,177 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Zetu Trade</span>
+        <h3 class="page-title">Admin Dashboard</h3>
+
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="stats-small stats-small--1 card card-small">
+            <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">Ürünler</span>
+                        <h6 class="stats-small__value count my-3">@ViewBag.Products </h6>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="stats-small stats-small--1 card card-small">
+            <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">Blog</span>
+                        <h6 class="stats-small__value count my-3">@ViewBag.Blogs </h6>
+                    </div>
+                    <div class="stats-small__data">
+                        Yayına Girecek : @ViewBag.ToBePublished <br>
+                        <span style="color:darkred"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="stats-small stats-small--1 card card-small">
+            <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">Sipariş</span>
+                        <h6 class="stats-small__value count my-3">@ViewBag.Orders</h6>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="stats-small stats-small--1 card card-small">
+            <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">Mesajlar</span>
+                        <h6 class="stats-small__value count my-3">@ViewBag.Messages </h6>
+                    </div>
+                    <div class="stats-small__data">
+                        Okunmamış Mesajlar : @ViewBag.UnreadedMessages <br>
+                        Okunmuş Mesajlar : @ViewBag.ReadedMessages <br>
+                        <span style="color:darkred"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="stats-small stats-small--1 card card-small">
+            <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">Tüm Teklifler</span>
+                        <h6 class="stats-small__value count my-3">@ViewBag.Offers </h6>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="stats-small stats-small--1 card card-small">
+            <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">Yeni Sipariş</span>
+                        <h6 class="stats-small__value count my-3">@ViewBag.NewOffers </h6>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="stats-small stats-small--1 card card-small">
+            <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">Verilen Teklifler</span>
+                        <h6 class="stats-small__value count my-3">@ViewBag.GivenOffers </h6>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="stats-small stats-small--1 card card-small">
+            <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">Onaylanan Teklifler</span>
+                        <h6 class="stats-small__value count my-3">@ViewBag.ApprovedOffers </h6>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+  
+
+    <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="stats-small stats-small--1 card card-small">
+            <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">Hazırlanan Siparişler</span>
+                        <h6 class="stats-small__value count my-3">@ViewBag.PreparedOffers</h6>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="stats-small stats-small--1 card card-small">
+            <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">Tamamlanan Siparişler</span>
+                        <h6 class="stats-small__value count my-3">@ViewBag.CompletedOffers </h6>
+                    </div>
+                   
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+﻿@model zetutrade_Model.Models.ProductText
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> localizer
+@{
+    ViewData["Title"] = Model.productName + " - Teklif Al";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .boxsizingBorder {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        max-width: 100% !important;
+    }
+</style>
+@if (ViewBag.product == "yes")
+{
+
+    <div class="row text-center">
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">@localizer["success_info"]</h4>
+            <p>@localizer["product_save"]</p>
+            <hr>
+
+        </div>
+    </div>
+
+
+}
+<div class="page-title">
+    <div class="container">
+        <div class="page-title-inner">
+            <h3>@localizer["order"] - @Model.productName</h3>
+            <div class="breadcumb"> <a asp-action="Index" asp-controller="Urunler">@localizer["product_title"]</a><span> / </span><span>@Model.productName</span></div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row" style="margin-top:20px;">
+        <div class="col-lg-12">
+            <div class="author-block">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="/@Url.Content(@ViewBag.Photourl)" alt="@Model.productName" class="img-responsive">
+                        <br />
+
+                    </div>
+                    <div class="col-md-9">
+                        <div class="author-name">
+                            <h1 style="font-size:16pt;">
+                                @Model.productName
+                            </h1>
+
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <p>@Model.productDescription</p>
+
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="ct-form">
+                                    <hr />
+                                    <p style="color:#901414"><i>@localizer["info_order"]</i></p>
+                                    <form class="contact-form" asp-action="Siparis" asp-controller="Urunler" method="post">
+                                        <input type="text" class="form-control invisible" name="productID" value="@Model.productID">
+                                        <div class="form-group">
+                                            <label for="cf_name">@localizer["your_name"] *</label>
+                                            <input type="text" class="form-control" name="orderNameSurname" id="cf_name" placeholder="@localizer["your_name"]" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="cf_email">@localizer["your_email_adress"] *</label>
+                                            <input type="email" class="form-control" name="orderEmail" id="cf_email" placeholder="@localizer["your_email_adress"]" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cf_message">@localizer["delivery_adress"] *</label>
+                                            <textarea class="form-control boxsizingBorder" name="orderAddress" id="cf_message" required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cf_name">@localizer["total_count_order"]*</label>
+                                            <input type="number" class="form-control" name="orderNumber" id="cf_name" placeholder="@localizer["number"]" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-blue" style="width:100%!important;">@localizer["get_an_offer"]</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\EfeTopcu\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\EfeTopcu\\.nuget\\packages"
+    ]
+  }
+}

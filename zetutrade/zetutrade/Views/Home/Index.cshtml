@@ -1,0 +1,117 @@
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> localizer
+
+
+@{
+    ViewData["Title"] = localizer["home_title"];
+}
+
+<div class="container">
+    <div class="home-content">
+        <div class="cat-offers">
+            <div class="brand-title">
+                <span>@localizer["product_title"]</span>
+                @await Component.InvokeAsync("Products")
+
+                <br />
+                @localizer["product_link"]
+                </p>
+
+                <a href="@Url.Action("Index","Urunler")" class="btn btn-blue">@localizer["product_title"]</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="home-content">
+        <div class="cat-offers">
+            <div class="brand-title">
+                <span>@localizer["services_title"]</span>
+            </div>
+            <div class="row">
+                <div class="col-md-4" style="margin-bottom:20px;">
+                    <div class="cat-sec-3">
+                        <img src="~/layimages/ihracat.png" class="img-responsive" alt="">
+                        <div class="cat-desc">
+                            <div class="cat-inner">
+                                <div class="cat-title">@localizer["export_consultancy"]</div>
+                                <a href="@Url.Action("Iletisim","Home")" class="btn btn-blue">@localizer["getcontact"]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" style="margin-bottom:20px;">
+                    <div class="cat-sec-3">
+                        <img src="~/layimages/ecopack.png" class="img-responsive" alt="">
+                        <div class="cat-desc">
+                            <div class="cat-inner">
+                                <div class="cat-title">@localizer["eco_pack"]</div>
+                                <a href="@Url.Action("Iletisim","Home")" class="btn btn-blue">@localizer["getcontact"]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="margin-bottom:20px;">
+                    <div class="cat-sec-3">
+                        <img src="~/layimages/mobilya.png" class="img-responsive" alt="">
+                        <div class="cat-desc">
+                            <div class="cat-inner">
+                                <div class="cat-title">@localizer["furniture_and_decoration"]</div>
+                                <a href="@Url.Action("Iletisim","Home")" class="btn btn-blue">@localizer["getcontact"]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="margin-bottom:20px;">
+                    <div class="cat-sec-3">
+                        <img src="~/layimages/tekstil.png" class="img-responsive" alt="">
+                        <div class="cat-desc">
+                            <div class="cat-inner">
+                                <div class="cat-title">@localizer["textile"]</div>
+                                <a href="@Url.Action("Iletisim","Home")" class="btn btn-blue">@localizer["getcontact"]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col-lg-12">
+        <br />
+        <a href="@Url.Action("Iletisim","Home")" class="btn btn-blue">@localizer["getcontact"]</a>
+    </div>
+
+</div>
+
+
+
+
+<div class="rec-blog">
+    <div class="container">
+        <div class="rec-blog-inner">
+            <div class="blog-title">
+                <span>@localizer["blog_title"]</span>
+            </div>
+            @await Component.InvokeAsync("HomeBlog")
+        </div>
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col-lg-12">
+        <br />
+        <a href="@Url.Action("Index","Blog")" class="btn btn-blue">@localizer["blog_title"]</a>
+    </div>
+
+</div>
+<br />
+<br />

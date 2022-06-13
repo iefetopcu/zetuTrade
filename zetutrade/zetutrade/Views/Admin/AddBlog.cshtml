@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewData["Title"] = "AddBlog";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.15.1/full/ckeditor.js"></script>
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Zetu Trade</span>
+        <h3 class="page-title">Blog Ekle</h3>
+    </div>
+
+</div>
+
+<div class="main-content-container container-fluid px-4">
+    <form class="add-new-post" method="post" enctype="multipart/form-data">
+        <div class="row">
+
+            <div class="col-lg-9 col-md-12">
+                <div class="card card-small mb-3">
+                    <div class="card-body">
+                        <input class="form-control form-control-lg mb-3" type="text" placeholder="İçerik Başlığı - Max 65 Karakter" name="blogTitle" required maxlength="65">
+                        <input class="form-control form-control-lg mb-3" type="text" placeholder="Ön Görünüm Yazısı Max 100 karakter" name="blogSpotText" required maxlength="100">
+                        <div class="add-new-post__editor mb-1">
+                            <textarea name="blogDescription"></textarea><br /><br />
+                            <script>
+                                CKEDITOR.replace('blogDescription');
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12">
+                <div class='card card-small mb-3'>
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Detaylar ve Fotoğraf</h6>
+                    </div>
+                    <div class='card-body p-0'>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item p-3">
+                                <span class="d-flex mb-2">
+                                    <i class="material-icons mr-1">border_color</i>
+                                    <strong class="mr-1">Yazar </strong>
+                                </span>
+
+                              
+                              
+                                <span class="d-flex mb-2">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <strong class="mr-1">İçerik Fotoğrafı<br /></strong>
+                                            <i style="color:#ff6a00;">749 × 330 px</i>
+
+                                        </div>
+                                        <div class="col-lg-6">
+
+                                            <strong class="ml-1">
+                                                <input type="file" name="blogPhoto" required />
+                                            </strong>
+                                        </div>
+                                    </div>
+
+                                </span>
+                                
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class='card card-small mb-3'>
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Tarih</h6>
+                    </div>
+                    <div class='card-body p-0'>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item p-3">
+
+
+                                <span class="d-flex mb-2">
+                                    <i class="material-icons mr-1">calendar_today</i>
+                                    <strong class="mr-1">Yayınlanma Zamanı </strong>
+                                    <input type="text" id="datepicker" name="releasetime" required="required" class="ml-auto"><br />
+                                </span>
+
+                            </li>
+                            <li class="list-group-item d-flex px-3">
+
+                                <button class="btn btn-sm btn-accent ml-auto" id="submitbutton">
+                                    <i class="material-icons">file_copy</i> Yayınla
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+</div>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+<script>
+    $(function () {
+        var dateNow = new Date();
+
+        $("#datepicker").datepicker({
+            dateFormat: "yy-mm-dd",
+        }).datepicker('setDate', new Date());
+        ;
+    });
+</script>

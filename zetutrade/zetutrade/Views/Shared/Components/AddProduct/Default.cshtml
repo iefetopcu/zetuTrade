@@ -1,0 +1,29 @@
+﻿<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Yeni Ürün Ekle</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form method="post" enctype="multipart/form-data" asp-controller="Admin" asp-action="AddProduct">
+            <div class="form-group">
+                <div class="modal-body">
+                    <input type="text" name="productName" placeholder="Ürün Adı" required class="form-control" />
+                    <label>Ürün Açıklaması</label><br /><br />
+                    <textarea name="productDescription" class="form-control" required></textarea><br /><br />
+                    <label>Ürün Fotoğrafı</label>
+                    <input type="file" name="productPhotoUrl" required /><br />
+                    <label>Kategori</label>
+                    <select name="categoryID" asp-items="@ViewBag.categories"></select>
+
+                    <input type="checkbox" name="isinstock" value="true" /> Stok Var
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <input type="submit" class="btn btn-primary" value="Ekle">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

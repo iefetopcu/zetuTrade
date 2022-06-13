@@ -1,0 +1,162 @@
+﻿@model zetutrade_Model.Models.Offer
+@{
+    ViewData["Title"] = "ShowOffer";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@if (ViewBag.producterror == "no")
+{
+
+  
+        
+            <div class="col-lg-12 bg-danger ">
+                <div class="page-header row no-gutters py-4">
+                    <div class="col-12 col-sm-12 text-center text-center mb-0">
+                        <h4 class="text-white">Başarısız !</h4><br />
+                        <p class="text-white">Ürünün ingilizce dökümanı eklenmemiştir.</p>
+                    </div>
+                </div>
+              
+            </div>
+        
+    
+
+
+}
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Teklif Kontrolü</span>
+    </div>
+</div>
+<hr />
+
+<div id="pdfContainer">
+    <div class="row">
+        <div class="col-lg-3">
+            Teklif İsteyen
+        </div>
+        <div class="col-lg-9">
+            : @Model.Order.orderNameSurname
+        </div>
+
+        <div class="col-lg-3">
+            E-Mail
+        </div>
+        <div class="col-lg-9">
+            : @Model.Order.orderEmail
+        </div>
+
+        <div class="col-lg-3">
+            Adres
+        </div>
+        <div class="col-lg-9">
+            : @Model.Order.orderAddress
+        </div>
+        <div class="col-lg-3">
+            Teklif Durumu
+        </div>
+        <div class="col-lg-9">
+            :
+
+            @if (Model.Status.statusName == "Yeni Sipariş")
+            {
+                <span style="color:#ff6a00">@Model.Status.statusName</span><br /><br />
+
+                <a asp-action="StatusUp" asp-controller="Admin" class="btn btn-success" asp-route-id="@Model.offerID">Teklifi Bir Sonraki Aşamaya Taşı</a>
+
+            }
+            @if (Model.Status.statusName == "Teklif Verildi")
+            {
+                <span style="color:#a45823">@Model.Status.statusName</span><br /><br />
+                <a asp-action="StatusDown" asp-controller="Admin" asp-route-id="@Model.offerID" class="btn btn-warning">Teklifi Bir Önceki Aşamaya Taşı</a>
+                <a asp-action="StatusUp" asp-controller="Admin" class="btn btn-success" asp-route-id="@Model.offerID">Teklifi Bir Sonraki Aşamaya Taşı</a>
+
+            }
+            @if (Model.Status.statusName == "Teklif Onaylandı")
+            {
+                <span style="color:#a91515">@Model.Status.statusName</span><br /><br />
+                <a asp-action="StatusDown" asp-controller="Admin" asp-route-id="@Model.offerID" class="btn btn-warning">Teklifi Bir Önceki Aşamaya Taşı</a>
+                <a asp-action="StatusUp" asp-controller="Admin" class="btn btn-success" asp-route-id="@Model.offerID">Teklifi Bir Sonraki Aşamaya Taşı</a>
+            }
+            @if (Model.Status.statusName == "Sipariş Hazırlanıyor")
+            {
+                <span style="color:#167647">@Model.Status.statusName</span><br /><br />
+                <a asp-action="StatusDown" asp-controller="Admin" asp-route-id="@Model.offerID" class="btn btn-warning">Teklifi Bir Önceki Aşamaya Taşı</a>
+                <a asp-action="StatusUp" asp-controller="Admin" class="btn btn-success" asp-route-id="@Model.offerID">Teklifi Bir Sonraki Aşamaya Taşı</a>
+            }
+            @if (Model.Status.statusName == "Sipariş Tamamlandı")
+            {
+                <span style="color:#1dae0c">@Model.Status.statusName</span><br /><br />
+                <a asp-action="StatusDown" asp-controller="Admin" asp-route-id="@Model.offerID" class="btn btn-warning">Teklifi Bir Önceki Aşamaya Taşı</a>
+
+            }
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-lg-3">
+            Ürün Adı
+        </div>
+        <div class="col-lg-9">
+            : @ViewBag.productname
+        </div>
+        <div class="col-lg-3">
+            Ürün Adeti
+        </div>
+        <div class="col-lg-9">
+            : @Model.Order.orderNumber
+        </div>
+        <div class="col-lg-3">
+            Ürün Fiyatı
+        </div>
+        <div class="col-lg-9">
+            : @Model.productPrice $
+        </div>
+        <div class="col-lg-3">
+            Ürün Toplam Fiyatı
+        </div>
+        <div class="col-lg-9">
+            : @Model.productTotalPrice $
+        </div>
+        <div class="col-lg-3">
+            Nakliye Ücreti
+        </div>
+        <div class="col-lg-9">
+            : @Model.shippingPrice $
+        </div>
+        <div class="col-lg-3">
+            İndirim
+        </div>
+        <div class="col-lg-9">
+            : @Model.discount $
+        </div>
+        <div class="col-lg-3">
+            Toplam Ücret
+        </div>
+        <div class="col-lg-9">
+            : @Model.productTotalPrice $ + @Model.shippingPrice $ - @Model.discount $ = <p style="color:#74113e">: @Model.offerTotalPrice $</p>
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-lg-3">
+
+    </div>
+    <div class="col-lg-9">
+        <a asp-action="OfferEmail" asp-controller="Admin" asp-route-id="@Model.offerID" class="btn btn-info">Teklifi E-Posta Olarak Gönder</a>
+        <a asp-action="OfferPdf" asp-controller="Admin" class="btn btn-info" asp-route-id="@Model.offerID">Teklifi PDF'e Çevir</a>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#btnPdf").click(function () {
+        var sHtml = $("pdfContainer").html();
+        sHtml = sHtml.replace(/</g, "StrTag").replace(/>/g, "EndTag");
+        window.open('../Admin/GeneratePdf?html' + sHtml, '_blank');
+    });
+</script>
+
+

@@ -1,0 +1,12 @@
+C:\Users\EfeTopcu\source\repos\zetutrade\zetutrade_Model\bin\Debug\net5.0\zetutrade_Model.deps.json
+C:\Users\EfeTopcu\source\repos\zetutrade\zetutrade_Model\bin\Debug\net5.0\zetutrade_Model.dll
+C:\Users\EfeTopcu\source\repos\zetutrade\zetutrade_Model\bin\Debug\net5.0\ref\zetutrade_Model.dll
+C:\Users\EfeTopcu\source\repos\zetutrade\zetutrade_Model\bin\Debug\net5.0\zetutrade_Model.pdb
+C:\Users\EfeTopcu\source\repos\zetutrade\zetutrade_Model\obj\Debug\net5.0\zetutrade_Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\EfeTopcu\source\repos\zetutrade\zetutrade_Model\obj\Debug\net5.0\zetutrade_Model.AssemblyInfoInputs.cache
+C:\Users\EfeTopcu\source\repos\zetutrade\zetutrade_Model\obj\Debug\net5.0\zetutrade_Model.AssemblyInfo.cs
+C:\Users\EfeTopcu\source\repos\zetutrade\zetutrade_Model\obj\Debug\net5.0\zetutrade_Model.csproj.CoreCompileInputs.cache
+C:\Users\EfeTopcu\source\repos\zetutrade\zetutrade_Model\obj\Debug\net5.0\zetutrade_Model.dll
+C:\Users\EfeTopcu\source\repos\zetutrade\zetutrade_Model\obj\Debug\net5.0\ref\zetutrade_Model.dll
+C:\Users\EfeTopcu\source\repos\zetutrade\zetutrade_Model\obj\Debug\net5.0\zetutrade_Model.pdb
+C:\Users\EfeTopcu\source\repos\zetuTrade\zetutrade_Model\obj\Debug\net5.0\zetutrade_Model.csprojAssemblyReference.cache

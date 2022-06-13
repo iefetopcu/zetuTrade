@@ -1,0 +1,50 @@
+﻿@model IEnumerable<zetutrade_Model.Models.Blog>
+@{
+    ViewData["Title"] = "Blog";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Zetu Trade</span>
+        <h3 class="page-title">Blog Yönetimi</h3>
+    </div>
+    <div class="col-12 col-sm-6 text-center text-sm-left mb-0">
+        <a asp-controller="Admin" asp-action="AddBlog" class="btn btn-primary">Blog Gir</a>
+    </div>
+</div>
+
+<div class="row">
+    @if (Model.Count() > 0)
+    {
+        @foreach (var posts in Model)
+        {
+            var blogtext = posts.BlogTexts.FirstOrDefault();
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="card card-small card-post card-post--1">
+                    <div class="card-post__image" style="background-image: url('/@posts.blogPhoto');">
+                        <a href="@Url.Action("DeleteBlog", "Admin" , new { id = posts.blogID })" onclick="return confirm('Bu İçeriği Silmek İstediğinize Emin Misiniz?')"><i class="material-icons badge badge-pill badge-secondary" style="color:white; padding:10px;">X</i></a>
+                        <p class="card-post__category badge badge-pill badge-dark">Blog </p>
+                        <div class="card-post__author d-flex">
+                           
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a class="text-fiord-blue" href="@Url.Action("UpdateBlog", "Admin" , new { id = posts.blogID })">@blogtext.blogTitle</a>
+                        </h5>
+                        <span class="text-muted">Yayınlanma Tarihi : @posts.releasetime.ToString("dd.MM.yyyy")</span>
+                        <br />
+                        <a asp-action="TextAddBlog" asp-route-id="@posts.blogID">Text Ekle</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-lg-12">
+            <h3 class="alert-danger text-center" style="padding:20px;">Herhangi bir blog yazısı bulunmuyor !</h3>
+        </div>
+    }
+</div>

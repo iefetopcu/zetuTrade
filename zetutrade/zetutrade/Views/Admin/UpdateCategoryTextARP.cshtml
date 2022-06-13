@@ -1,0 +1,58 @@
+﻿@model zetutrade_Model.Models.CategoryText
+@{
+    ViewData["Title"] = "UpdateCategoryTextARP";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Zetu Trade</span>
+        <h3 class="page-title">Kategori Arapça Güncelle</h3>
+    </div>
+
+</div>
+
+@using (Html.BeginForm("UpdateCategory", "Admin", FormMethod.Post))
+{
+    <div class="main-content-container container-fluid px-12">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card card-small mb-9">
+                    <div class="card-body">
+                        @Html.TextBoxFor(m => m.categoryTextID, new { @class = "invisible" })<br />
+                        <label>Kategori Adı</label>
+                        @Html.TextBoxFor(m => m.categoryName, new { @class = "form-control form-control-lg mb-3" })
+
+                        <br /><br />
+                        <button class="btn btn-sm btn-accent ml-auto">
+                            <i class="material-icons">file_copy</i> Güncelle
+                        </button>
+                        <br />
+                        <h5 class="text-center">Kategori Text Güncelle</h5>
+                        <div class="row text-center">
+
+                            <div class="col-lg-4">
+                                <a asp-action="UpdateCategoryTextEN" asp-route-id="@Model.categoryID" class="btn btn-sm btn-warning ml-auto">
+                                    <i class="material-icons">description</i> İngilizce
+                                </a>
+                            </div>
+                            <div class="col-lg-4">
+                                <a asp-action="UpdateCategoryTextESP" asp-route-id="@Model.categoryID" class="btn btn-sm btn-warning ml-auto">
+                                    <i class="material-icons">description</i> İspanyolca
+                                </a>
+                            </div>
+                            <div class="col-lg-4">
+                                <a asp-action="UpdateCategoryTextArp" asp-route-id="@Model.categoryID" class="btn btn-sm btn-warning ml-auto">
+                                    <i class="material-icons">description</i> Arapça
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+}

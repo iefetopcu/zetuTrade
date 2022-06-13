@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row text-center">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6" style="padding:30px;">
+            <form method="post" asp-action="Login" asp-controller="Home" class="form-group">
+                <label>Kullanıcı E-Mail</label>
+                <input type="email" name="email" required class="form-control" />
+                <label>Şifre</label>
+                <input type="password" name="password" required class="form-control" /><br />
+                <input type="submit" value="Giriş Yap" class="btn btn-success" /><br />
+                <a value="Şifremi Unuttum">Şifremi Unuttum</a>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+

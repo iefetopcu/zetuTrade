@@ -1,0 +1,69 @@
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> localizer
+@{
+    ViewData["Title"] = localizer["services_title"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-title">
+    <div class="container">
+        <div class="page-title-inner">
+            <h3>@localizer["services_title"]</h3>
+            <div class="breadcumb"> <a asp-action="Index" asp-controller="Home">@localizer["home_title"]</a><span> / </span><span>@localizer["services_title"]</span></div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="home-content">
+        <div class="cat-offers">
+            <div class="row">
+                <div class="col-md-4" style="margin-bottom:20px;">
+                    <div class="cat-sec-3">
+                        <img src="~/layimages/ihracat.png" class="img-responsive" alt="">
+                        <div class="cat-desc">
+                            <div class="cat-inner">
+                                <div class="cat-title">@localizer["export_consultancy"]</div>
+                                <a href="@Url.Action("Iletisim","Home")" class="btn btn-blue">@localizer["getcontact"]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" style="margin-bottom:20px;">
+                    <div class="cat-sec-3">
+                        <img src="~/layimages/ecopack.png" class="img-responsive" alt="">
+                        <div class="cat-desc">
+                            <div class="cat-inner">
+                                <div class="cat-title">@localizer["eco_pack"]</div>
+                                <a href="@Url.Action("Iletisim","Home")" class="btn btn-blue">@localizer["getcontact"]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="margin-bottom:20px;">
+                    <div class="cat-sec-3">
+                        <img src="~/layimages/mobilya.png" class="img-responsive" alt="">
+                        <div class="cat-desc">
+                            <div class="cat-inner">
+                                <div class="cat-title">@localizer["furniture_and_decoration"]</div>
+                                <a href="@Url.Action("Iletisim","Home")" class="btn btn-blue">@localizer["getcontact"]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="margin-bottom:20px;">
+                    <div class="cat-sec-3">
+                        <img src="~/layimages/tekstil.png" class="img-responsive" alt="">
+                        <div class="cat-desc">
+                            <div class="cat-inner">
+                                <div class="cat-title">@localizer["textile"]</div>
+                                <a href="@Url.Action("Iletisim","Home")" class="btn btn-blue">@localizer["getcontact"]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

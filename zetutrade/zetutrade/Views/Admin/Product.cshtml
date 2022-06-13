@@ -1,0 +1,127 @@
+﻿@model IEnumerable<zetutrade_Model.Models.Product>
+
+
+@{
+    ViewData["Title"] = "Product";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+</script>
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Zetu Trade</span>
+        <h3 class="page-title">Ürün Yönetimi</h3>
+    </div>
+    <div class="col-12 col-sm-6 text-center text-sm-left mb-0">
+        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#AddProduct">Yeni Ürün</a>
+        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#AddCategory">Yeni Kategori</a>
+        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#CategoryList">Kategori Listesi</a>
+        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#SearchProduct">Ürün Ara</a>
+
+    </div>
+</div>
+
+
+<div class="row">
+    @if (Model.Count() > 0)
+    {
+        @foreach (var product in Model)
+        {
+            var producttext = product.ProductTexts.FirstOrDefault();
+            var categorytext = product.Category.CategoryTexts.Where(a => a.categoryID == product.categoryID).FirstOrDefault();
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="card card-small card-post card-post--1">
+                    <div class="card-post__image" style="background-image: url('/@product.productPhotoUrl');">
+                        <a asp-action="DeleteProduct" asp-route-id="@product.productID" onclick="return confirm('Bu Ürünü Silmek İstediğinize Emin Misiniz?')"><i class="material-icons badge badge-pill badge-secondary" style="color:white; padding:10px;">X</i></a>
+                        <span class="card-post__category badge badge-pill badge-warning">@categorytext.categoryName</span>
+
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a class="text-fiord-blue" asp-action="UpdateProduct" asp-route-id="@product.productID">@producttext.productName</a>
+                        </h5>
+                        @if (product.isinstock == true)
+                        {
+                            <span class="text-muted">Stokta Var</span>
+                        }
+                        else
+                        {
+                            <span class="text-muted">Stokta Yok</span>
+                        }
+                        - <a asp-action="TextAddProduct" asp-route-id="@product.productID">Text Ekle</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-lg-12">
+            <h3 class="alert-danger text-center" style="padding:20px;">Herhangi bir ürün bulunmuyor, lütfen yeni ürün girin!</h3>
+        </div>
+
+    }
+
+</div>
+
+
+
+
+<div class="modal fade" id="AddProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    @await Component.InvokeAsync("AddProduct")
+</div>
+
+<div class="modal fade" id="AddCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Yeni Kategori Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" asp-controller="Admin" asp-action="AddCategory">
+                <div class="form-group">
+                    <div class="modal-body">
+                        <input type="text" name="categoryName" placeholder="Kategori Adı" required class="form-control" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                        <input type="submit" class="btn btn-primary" value="Ekle">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="CategoryList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    @await Component.InvokeAsync("CategoryList")
+</div>
+<div class="modal fade" id="SearchProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ürün Ara</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" asp-controller="Admin" asp-action="SearchProduct">
+                <div class="form-group">
+                    <div class="modal-body">
+                        <input type="text" name="searchkey" placeholder="Ürün Adı" required class="form-control" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                        <input type="submit" class="btn btn-primary" value="Ara">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

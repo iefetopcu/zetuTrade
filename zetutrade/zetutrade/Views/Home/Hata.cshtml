@@ -1,0 +1,33 @@
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> localizer
+@{
+    ViewData["Title"] = "Hata";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="error-template">
+                <h1>
+                    Oops!
+                </h1>
+                <h2>
+                    @localizer["error_404"]
+                </h2>
+                <div class="error-details">
+                    <h4 style="color:#ff6a00;">@localizer["error_page"]</h4> 
+                </div>
+                <br /><br />
+                <div class="error-actions">
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-primary btn-lg">
+                        
+                        @localizer["home_title"]
+                    </a>
+                </div>
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+</div>

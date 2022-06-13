@@ -1,0 +1,256 @@
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> localizer
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>@ViewData["Title"] - Zetu Trade</title>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700' rel='stylesheet' type='text/css'>
+    <link href='~/layfont-awesome/css/font-awesome.css' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap -->
+    <link href="~/laycss/bootstrap.min.css" rel="stylesheet">
+
+    <!-- main css -->
+
+    <link href="~/responsive.css" rel="stylesheet" />
+    <!-- Slider -->
+    <link href="~/laycss/owl.carousel.css" rel="stylesheet">
+    <link href="~/laycss/owl.theme.css" rel="stylesheet">
+    <link href="~/laycss/owl.transitions.css" rel="stylesheet">
+    <link href="~/style.css" rel="stylesheet" />
+    <!-- lightbox -->
+    <link href="~/laycss/prettyPhoto.css" rel="stylesheet">
+</head>
+<body>
+
+
+    <div id="wrapper" class="homepage-1">
+        <!-- wrapper -->
+        <div id="header">
+            <!-- header -->
+
+            <div id="believe-nav">
+                <!-- Nav -->
+                <div class="container">
+                    <div class="min-marg">
+                        <nav class="navbar navbar-default">
+                            <!-- <div class="container-fluid"> -->
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" asp-action="Index" asp-controller="Home"><img src="~/Photos/zetulogo.png" alt="Zetu Trade Logo " style="height:120px;"></a>
+                            </div>
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                </ul>
+
+                                <ul class="nav navbar-nav navbar-right">
+                                    @*<li class="menu-search-form">
+                                        <a href="#" id="open-srch-form"><img src="~/layimages/srch.png"></a>
+                                    </li>*@
+
+                                    <li id="open-srch-form-mod">
+                                        <div>
+                                            <form class="side-search">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon1">
+                                                    <a href="" class="input-group-addon btn-side-serach" id="basic-addon1"><i class="fa fa-search"></i></a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div><!-- /.navbar-collapse -->
+                            <!--</div> -->
+
+                        </nav>
+                    </div>
+                    <div class="srch-form">
+                        <form class="side-search">
+                            @*<div class="input-group">
+                                <input type="text" class="form-control search-wid" placeholder="Search Here" aria-describedby="basic-addon2">
+                                <a href="" class="input-group-addon btn-side-serach" id="basic-addon2"><i class="fa fa-search"></i></a>
+                            </div>*@
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- Nav -->
+            <!--<div id="cat-nav">
+                <div class="container">
+                    <div class="wrap-cat">
+                        <a href="#" id="to-open-cat" class="btn btn-default btn-sm">show categories</a>
+                        <ul class="this-cat clearfix">
+                            <li class="active"><a href="">ELECTRONICS <i class="fa fa-angle-down"></i></a></li>
+                            <li><a href="">MEN <i class="fa fa-angle-down"></i></a></li>
+                            <li><a href="">WOMEN <i class="fa fa-angle-down"></i></a></li>
+                            <li><a href="">BABY & KIDS <i class="fa fa-angle-down"></i></a></li>
+                            <li><a href="">BOOKS & MEDIA <i class="fa fa-angle-down"></i></a></li>
+                            <li><a href="">HOME & KITCHEN <i class="fa fa-angle-down"></i></a></li>
+                            <li><a href="">MORE STORES <i class="fa fa-angle-down"></i></a></li>
+                            <li><a href="">OFFERS ZONE <i class="fa fa-angle-down"></i></a></li>
+                            <li class="cat-img-off"><img src="images/offers.png" alt="off"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>-->
+
+            <div id="cat-nav">
+                <div class="container">
+                    <nav class="navbar navbar-default">
+                        <!-- <div class="container-fluid"> -->
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#cat-nav-mega">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="cat-nav-mega">
+                            <ul class="nav navbar-nav">
+                                <li><a asp-action="Index" asp-controller="Home">@localizer["home_title"]</a></li>
+                                <li><a asp-action="Index" asp-controller="Urunler">@localizer["product_title"] </a></li>
+                                <li><a asp-action="Index" asp-controller="Hizmetler">@localizer["services_title"] </a></li>
+                                <li><a asp-action="Hakkimizda" asp-controller="Home">@localizer["about_title"] </a></li>
+                                <li><a asp-action="Index" asp-controller="Blog">@localizer["blog_title"]</a></li>
+                                <li><a asp-action="Iletisim" asp-controller="Home">@localizer["contact_title"]</a></li>
+                                <li class="nav-item dropdown" style="margin-right:0px!important; margin-left:0px!important;">
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> @localizer["language_title"]</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdown09">
+                                        <a class="dropdown-item" href="/tr-TR"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/2560px-Flag_of_Turkey.svg.png" style="height:15px;" /> @localizer["turkish_title"]</a>
+                                        <a class="dropdown-item" href="/en-US"><img src="http://upload.turkcewiki.org/wikipedia/commons/f/f2/Flag_of_Great_Britain_%281707%E2%80%931800%29.svg" style="height:15px;" /> @localizer["english_title"]</a>
+                                        @*<a class="dropdown-item" href="#it"><img src="https://cdn.britannica.com/79/5779-004-DC479508/Flag-Saudi-Arabia.jpg" style="height:15px;" /> @localizer["arabic_title"]</a>
+        <a class="dropdown-item" href="#ru"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/2560px-Flag_of_Spain.svg.png" style="height:15px;" /> @localizer["spanish_title"]</a>*@
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                        <!--</div> -->
+                    </nav>
+                </div>
+            </div>
+        </div> <!-- header -->
+        @if (ViewBag.Subscribe == "no")
+        {
+            <div class="container">
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">@localizer["unsuccess"]</h4><hr />
+                    <p>@localizer["retry_mail_adress"]</p>
+
+                </div>
+            </div>
+
+        }
+        @if (ViewBag.Subscribe == "yes")
+        {
+            <div class="container">
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">@localizer["success_info"]</h4><hr />
+                    <p>@localizer["mail_save_info"]</p>
+
+                </div>
+            </div>
+
+        }
+        @RenderBody()
+
+
+
+        <div id="footer">
+            <!-- Footer -->
+            <div class="footer-widget">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="text-widget">
+
+                                <img src="~/Photos/zetulogo.png" style="height:100px;" alt="ft-logo">
+                                <p>
+                                    @localizer["social_medya_info"]
+                                </p>
+                                <ul class="ft-soc clearfix">
+
+                                    <li><a href="" target="_blank"><i class="fa fa-twitter"></i></a></li>
+
+                                    <li><a href="https://www.instagram.com/zetutrade/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="https://www.linkedin.com/company/zetu-trade" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="quick-links">
+                               
+                                <ul>
+                                    <li><a asp-action="Index" asp-controller="Home">@localizer["home_title"]</a></li>
+                                    <li><a asp-action="Index" asp-controller="Urunler">@localizer["product_title"]</a></li>
+                                    <li><a asp-action="Index" asp-controller="Hizmetler">@localizer["services_title"]</a></li>
+                                    <li><a asp-action="Hakkimizda" asp-controller="Home">@localizer["about_title"]</a></li>
+                                    <li><a asp-action="Index" asp-controller="Blog">@localizer["blog_title"]</a></li>
+                                    <li><a asp-action="Iletisim" asp-controller="Home">@localizer["contact_title"]</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="subscribe">
+                                <div class="wid-title">@localizer["subscriber_title"]</div>
+                                <p>
+                                    @localizer["subscriber_description"]
+                                </p>
+                                <form method="post" asp-action="subscribe" asp-controller="Home">
+                                    <div class="form-group">
+
+                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="@localizer["your_email_adress"]" name="subsEmail">
+                                    </div>
+                                    <button type="submit" class="btn btn-default">@localizer["subscribe"]</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-text">
+                <div class="container">
+                    <p>Copyright 2021. Designed and Developed by <a href="https://www.artedijital.com/">Arte Dijital </a> </p>
+                </div>
+            </div>
+        </div><!-- Footer -->
+    </div> <!-- wrapper -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/layjs/library.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/layjs/bootstrap.js"></script>
+    <script src="~/layjs/owl.carousel.min.js"></script>
+    <script src="~/layjs/jquery.raty.js"></script>
+    <script src="~/layjs/ui.js"></script>
+    <script src="~/layjs/jquery.prettyPhoto.js"></script>
+    <script src="~/layjs/jquery.selectbox-0.2.js"></script>
+    <script src="~/layjs/theme-script.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

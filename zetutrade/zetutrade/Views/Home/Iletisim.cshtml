@@ -1,0 +1,110 @@
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> localizer
+@{
+    ViewData["Title"] = localizer["contact_title"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (ViewBag.contact == "yes")
+{
+
+    <div class="row text-center">
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">@localizer["success_info"]</h4>
+            <p>@localizer["contact_save"]</p>
+            <hr>
+
+        </div>
+    </div>
+
+
+}
+<div id="content">
+    <!-- Content -->
+
+    <div class="page-title">
+        <div class="container">
+            <div class="page-title-inner">
+                <h3>@localizer["contact_title"]</h3>
+                <div class="breadcumb"> <a asp-action="Index" asp-controller="Home">@localizer["home_title"]</a><span> / </span><span>@localizer["contact_title"]</span></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1861.1624277251553!2d29.067245778292023!3d40.984835462908364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac7959b2c3225%3A0x7b2f11647a15c86e!2sMerdivenk%C3%B6y%2C%20Ressam%20Salih%20Erimez%20Cad.%20No%3A32%2C%2034732%20Kad%C4%B1k%C3%B6y%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1632345488677!5m2!1str!2str" height="450" style="border:0; width:100%!important; margin-bottom:20px;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="about-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 ct-desc">
+
+                    <div class="post-content">
+                        <h4>
+                            <span>@localizer["contact_with_we"]</span>
+                        </h4>
+                    </div>
+                    <h4>@localizer["contact_adress"] </h4>
+
+                    <h3 class="contact-loc">İLETİŞİM</h3>
+                    <div class="row loc-det">
+                        <div class="col-md-12">
+                            <p>
+                                <i class="fa fa-phone" aria-hidden="true"></i> @localizer["contact_telephone"] : <a href="tel:+902165659774">
+                                    +90 216 565 97 74
+                                </a><br>
+                                <i class="fa fa-fax" aria-hidden="true"></i> Fax : +90 216 566 77 15<br>
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <a href="mailto:info@zetutrade.com"> info@zetutrade.com</a><br>
+                                <i class="fa fa-globe" aria-hidden="true"></i><a href="https://www.zetutrade.com/" target="_blank"> www.zetutrade.com</a><br>
+
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="post-content" style="margin-top:50px!important;">
+                                <h5>
+                                    <span>ZETU İthalat İhracat ve Dış Ticaret Ltd. Şti.</span>
+                                </h5>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-5 ct-form">
+                    <h3>@localizer["contact_form"]</h3>
+
+                    <form asp-action="Iletisim" asp-controller="Home" method="post">
+                        <div class="form-group">
+                            <label for="cf_name">@localizer["your_name"]*</label>
+                            <input type="text" class="form-control" name="nameSurname" id="cf_name" placeholder="@localizer["your_name"]">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cf_email">@localizer["your_email_adress"]*</label>
+                            <input type="email" class="form-control" name="email" id="cf_email" placeholder="@localizer["your_email_adress"]">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cf_subject">@localizer["subject"]*</label>
+                            <input type="text" class="form-control" name="subject" id="cf_subject" placeholder="@localizer["subject"]">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cf_message">@localizer["mesaj"]*</label>
+                            <textarea class="form-control" name="message" id="cf_message"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-blue">@localizer["send"]</button>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

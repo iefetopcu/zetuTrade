@@ -1,0 +1,58 @@
+﻿@model IEnumerable<zetutrade_Model.Models.Subscriber>
+@{
+    ViewData["Title"] = "Customer";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-6 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Zetu Trade</span>
+        <h3 class="page-title">Müşteri Yönetimi</h3>
+    </div>
+    <div class="col-12 col-sm-6 text-center text-sm-left mb-0">
+       
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-sm-12 text-center text-sm-left mb-0">
+        <span class="page-subtitle">Takipçi Listesi</span>
+        
+    </div>
+    @if (Model.Count() > 0)
+    {
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Ad Soyad</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">İşlem</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var subs in Model)
+                {
+                    <tr>
+                        
+                        <td>@subs.subsEmail</td>
+                        <td> <a asp-action="DeleteSubscribers" asp-route-id="@subs.subsID" onclick="return confirm('Bu Takipçiyi Silmek İstediğinize Emin Misiniz?')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="col-lg-12">
+            <h3 class="alert-danger text-center" style="padding:20px;">Herhangi bir abone bulunmuyor !</h3>
+        </div>
+    }
+</div>
+
+
+           
